@@ -1,6 +1,6 @@
 import React from "react";
 import { Container, Row, Col } from "react-bootstrap";
-
+// editing the file
 const Footer = () => {
   return (
     <footer>
