@@ -1,14 +1,14 @@
-import React, { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { Link } from 'react-router-dom';
-import { listProducts } from '../actions/productActions';
-import { Row, Col } from 'react-bootstrap';
-import Product from '../components/Product';
-import Loader from '../components/Loader';
-import Paginate from '../components/Paginate';
-import Message from '../components/Message';
-import ProductCarousel from '../components/ProductCarousel';
-import Meta from '../components/Meta';
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { Link } from "react-router-dom";
+import { listProducts } from "../actions/productActions";
+import { Row, Col } from "react-bootstrap";
+import Product from "../components/Product";
+import Loader from "../components/Loader";
+import Paginate from "../components/Paginate";
+import Message from "../components/Message";
+import ProductCarousel from "../components/ProductCarousel";
+import Meta from "../components/Meta";
 
 const HomeScreen = ({ match }) => {
   const keyword = match.params.keyword;
@@ -16,7 +16,7 @@ const HomeScreen = ({ match }) => {
   const dispatch = useDispatch();
   const productList = useSelector((state) => state.productList);
   const { loading, error, products, page, pages } = productList;
-
+  // new code
   useEffect(() => {
     dispatch(listProducts(keyword, pageNumber));
   }, [dispatch, keyword, pageNumber]);
@@ -27,7 +27,7 @@ const HomeScreen = ({ match }) => {
       {!keyword ? (
         <ProductCarousel />
       ) : (
-        <Link to='/' className='btn btn-light'>
+        <Link to="/" className="btn btn-light">
           Go Back
         </Link>
       )}
@@ -35,7 +35,7 @@ const HomeScreen = ({ match }) => {
       {loading ? (
         <Loader />
       ) : error ? (
-        <Message variant='danger'>{error}</Message>
+        <Message variant="danger">{error}</Message>
       ) : (
         <>
           <Row>
@@ -48,7 +48,7 @@ const HomeScreen = ({ match }) => {
           <Paginate
             pages={pages}
             page={page}
-            keyword={keyword ? keyword : ''}
+            keyword={keyword ? keyword : ""}
           ></Paginate>
         </>
       )}
